@@ -76,7 +76,7 @@ BEGIN_PM:
     mov ebx, in_protected_mode_msg
     call print_string_pm
 
-    call KERNEL_OFFSET
+    call KERNEL_OFFSET  ; Start executing instructions from the label
 
     jmp $
 
