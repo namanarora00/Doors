@@ -9,8 +9,8 @@ KERNEL_OFFSET equ 0x1000    ; memeory offset at which we will load the kernel fr
 jmp main
 
 ; Real mode includes
-%include "print_utils.asm"
-%include "disk_utils.asm"
+%include "boot/print_utils.asm"
+%include "boot/disk_utils.asm"
 
 main:
     mov bp, 0x9000      ; making stack far away. 
@@ -54,8 +54,8 @@ switch_to_protected_mode:
 [bits 32]
 
 ; Protected mode includes
-%include "protected_mode_utils.asm"
-%include "gdt.asm"
+%include "boot/protected_mode_utils.asm"
+%include "boot/gdt.asm"
 
 
 init_pm:
