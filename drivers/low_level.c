@@ -39,3 +39,16 @@ void out_word_from_port(unsigned short data, unsigned short port)
 {
     __asm__("out %%ax, %%dx" ::"a"(data), "d"(port));
 }
+
+void memset(void *start, char target, int len)
+{
+    // Set byte by byte.
+    unsigned char *ptr = start;
+
+    while (len)
+    {
+        *ptr = target;
+        len--;
+        ptr++;
+    }
+}
