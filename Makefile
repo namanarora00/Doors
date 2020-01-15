@@ -3,9 +3,9 @@
 # $@ is the target
 
 # This expands to a list of files which match the pattern
-C_SRC_FILES = $(wildcard kernel/*.c drivers/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h)
-OBJ = ${C_SRC_FILES:.c=.o}
+C_SRC_FILES = $(wildcard  drivers/*.c cpu/*.c kernel/*.c)
+HEADERS = $(wildcard  drivers/*.h cpu/*.h kernel/*.h)
+OBJ = ${C_SRC_FILES:.c=.o cpu/interrupt.o }
 
 all: os_image
 
@@ -20,9 +20,9 @@ kernel.bin: kernel/kernel_entry.o ${OBJ}
 
 clean:
 	rm -fr *.bin *.dis *.o os_image *.map
-	rm -fr kernel/*.o drivers/*.o
+	rm -fr kernel/*.o drivers/*.o cpu/*.o
 
-kernel.dis : kernel.bin
+%.dis : %.bin
 	ndisasm -b 32 $< > $@
 
 
