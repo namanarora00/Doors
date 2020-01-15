@@ -25,7 +25,7 @@ void print_char(char c, int row, int col, char attr)
     // If it is a new line char, we only change the cursor pos by changing the offset.
     if (c == '\n')
     {
-        int current_row = offset / 2 * COLS;        // using the formula in screen offset function.
+        int current_row = (offset / 2) / COLS;      // using the formula in screen offset function.
         offset = screen_offset(current_row + 1, 0); // make the offset to the next row's first column
     }
     else
