@@ -1,13 +1,12 @@
 #include "../drivers/screen.h"
+#include "../drivers/keyboard.h"
 #include "../cpu/idt.h"
+#include "../cpu/isr.h"
 
 void main()
 {
     clear_screen();
+    print("Hello! Welcome to KANA OS!\n\0");
     idt_init();
-
-    char *message = "Hello! Welcome to KANA OS!\n\0";
-    print(message);
-
-    __asm__ volatile("int $0x1F");
+    init_keyboard();
 }
