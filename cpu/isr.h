@@ -1,3 +1,6 @@
+#ifndef ISR_H
+#define ISR_H
+
 typedef unsigned int uint32;
 
 // represents the stack when an isr handler is called by  isr_common_stub
@@ -9,3 +12,7 @@ typedef struct registers_t
     uint32 eip, cs, eflags, useresp, ss;           //Pushed by processor
 
 } registers_t;
+
+typedef void (*isr_t)(registers_t); // void - return type, isr_t is the typename and register_t is the type of the args
+
+#endif
